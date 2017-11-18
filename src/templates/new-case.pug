@@ -32,12 +32,6 @@ html
                 div(class='age', data-value='18', data-input='age') 18
                 div(class='age', data-value='Adult', data-input='age') Adult
 
-                h2 Call Notes
-                p(class='hint') Enter any information you feel relevant in the notes section, this will save to the case file automatically.
-                div(class='auto-save')
-                    div(class='on-off') On
-                textarea(name='notes')
-
             div(class='step-two')
                 h2 Step #[span(class='step-icon') 2] Extra Case Information
                 p(class='hint') Please try to collect as much information as possible, if there is no info to collect please press "Unknown"
@@ -158,5 +152,11 @@ html
                     input(type='hidden', name='follow_up', value='Unknown')
                     div(class='age', data-value='yes', data-input='follow_up') 0-1
                     div(class='age', data-value='no', data-input='follow_up') 2-4
+
+            h2 Call Notes
+            p(class='hint') Enter any information you feel relevant in the notes section, this will save to the case file automatically.
+            div(class='auto-save')
+                div(class='on-off') On
+            textarea(name='notes')
 
         include ./partials/foot.pug
