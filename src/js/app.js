@@ -126,6 +126,76 @@ var app = function (app) {
     };
 
     /**
+     * Create a new user
+     */
+    app.newUser = function() {
+        app.debug('app.newUser()');
+        var password  = document.getElementById('password').value,
+            passwordC = document.getElementById('passwordC').value,
+            data;
+
+        if(password !== passwordC) {
+            alert('Passwords do not match, please try again.');
+            return;
+        }
+
+        data = [
+            { name : 'p', val : 'newUser' },
+            { name : 'username', val : document.getElementById('username').value },
+            { name : 'password', val : password }
+        ];
+
+        app.ajax(config.url + config.api, data, app.postNewUser);
+    };
+
+    /**
+     * Callback for new user
+     */
+    app.postNewUser = function(xhr) {
+        app.debug('app.postNewUser()');
+        var res  = JSON.parse(xhr.responseText);
+
+        if(res.success) {
+            app.gotUsers();
+        } else {
+            app.debug('XHR Fail');
+        }
+    };
+
+    /**
+     * Get admin users
+     */
+    app.getUsers = function() {
+        app.debug('app.getUsers()');
+        var data = [
+                { name : 'p', val : 'getUsers' }
+            ];
+
+        app.ajax(config.url + config.api, data, app.gotUsers);
+    };
+
+    /**
+     * Callback after got users
+     */
+     app.gotUsers = function(xhr) {
+        app.debug('app.gotUsers()');
+        var res    = JSON.parse(xhr.responseText),
+            output = '',
+            i;
+
+        if(res.success) {
+            for(i = 0; i < res.users.length; i++) {
+                output += '<div class="username">' + res.users[i].username + ' [ edit ] </div>';
+            }
+
+            document.getElementById('user-list').innerHTML = output;
+        } else {
+            //app.logout();
+            app.debug('XHR Fail');
+        }
+     }
+
+    /**
      * Page specific code for new contact
      */
     app.newCase = function() {
@@ -143,7 +213,6 @@ var app = function (app) {
     app.postNewContact = function(xhr) {
         app.debug('app.postNewContact()');
         var formEle = document.querySelectorAll('input', 'textarea'),
-            data = '',
             res  = JSON.parse(xhr.responseText),
             date,month,i;
 

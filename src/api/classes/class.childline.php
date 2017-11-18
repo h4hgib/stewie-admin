@@ -108,6 +108,63 @@ class Childline {
     }
 
     /**
+     * Get all admin users
+     */
+    public function getUsers() {
+        $this->checkValidUser();
+
+        $this->db->sql = 'SELECT id, username FROM '.$this->db->dbTbl['users'].' ORDER BY username';
+
+        $res = $this->db->fetchAll();
+
+        if($res === false) {
+            $this->output = array(
+                'success' => false,
+                'key'     => 'sdop6'
+            );
+        } else {
+            $this->output = array(
+                'success' => true,
+                'key'     => 'ffUI8',
+                'users'   => $res
+            );
+        }
+
+        $this->renderOutput();
+    }
+
+    /**
+     * Add new user to the db
+     */
+    public function newUser() {
+        $this->checkValidUser();
+
+        $this->db->sql = 'INSERT INTO '.$this->db->dbTbl['users'].' (username, salt, hash) VALUES (:username, :salt, :hash)';
+
+        $salt = $this->getNewSalt();
+
+        $res = $this->db->execute(array(
+            ':username' => $this->getData('username'),
+            ':salt'     => $salt,
+            ':hash'     => md5($salt . $this->getData('password'))
+        ));
+
+        if($res === false) {
+            $this->output = array(
+                'success' => false,
+                'key'     => 'xxT5r'
+            );
+        } else {
+            $this->output = array(
+                'success' => true,
+                'key'     => 'dU4r5'
+            );
+        }
+
+        $this->renderOutput();
+    }
+
+    /**
      * Save a field to the db
      */
     public function saveContact() {
@@ -197,14 +254,15 @@ class Childline {
      *
      * Thanks http://stackoverflow.com/questions/4356289/php-random-string-generator/31107425#31107425
      */
-    function getNewSalt($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'){
+    function getNewSalt($length = 10, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'){
         $str = '';
         $max = mb_strlen($keyspace, '8bit') - 1;
         for ($i = 0; $i < $length; ++$i) {
             //$str .= $keyspace[random_int(0, $max)]; // Fuck this shit for now, I'm in a hurry, so rand() it is
             $str .= $keyspace[rand(0, $max)];
         }
-        return $str;
+
+        return md5($str);
     }
 
     /**
