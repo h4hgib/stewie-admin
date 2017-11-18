@@ -85,6 +85,7 @@ class Childline {
      */
     public function newContact() {
         $this->checkValidUser();
+
         $this->db->sql = 'INSERT INTO '.$this->db->dbTbl['contact'].' () VALUES ()';
 
         $res = $this->db->execute();
@@ -103,12 +104,6 @@ class Childline {
             );
         }
 
-        $message = 'New Message From: '.$this->getData('name').'<br><br>'.'Email: '.$this->getData('email').'<br><br>'.'Phone: '.$this->getData('phone').'<br><br>'.'Message:<br><br>'.nl2br($this->getData('message'));
-
-        require_once 'class.mailer.php';
-
-        $m = new CreativeAnimalMail('stu.tippett@gmail.com', 'Childline Contact', 'New Message', $message);
-
         $this->renderOutput();
     }
 
@@ -116,6 +111,8 @@ class Childline {
      * Save a field to the db
      */
     public function saveContact() {
+        $this->checkValidUser();
+
         $this->db->sql = 'UPDATE '.$this->db->dbTbl['contact'].' SET '.$this->getData('field').' = :value WHERE id = :id';
 
         $res = $this->db->execute(array(
