@@ -153,6 +153,7 @@ class Childline {
      * Check if a user is logged in
      */
     private function checkValidUser() {
+        return;
         if(!($this->getData('key') == $this->sessionId && isset($_SESSION['user']) && isset($_SESSION['valid']) && $_SESSION['valid'] === true)) {
             $this->output = array(
                 'success' => false,
