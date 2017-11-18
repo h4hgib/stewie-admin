@@ -3,11 +3,9 @@ html
     include ./partials/head.pug
 
     body(class='loading')
+
         div(class='app')
             include ./partials/layout/header.pug
-            p [ home page ]
-
-        div(class='testing')
-            p I am some default text
-
-        include ./partials/foot.pug
+            include ./partials/layout/navigation.pug
+            include ./partials/layout/content.pug
+            include ./partials/foot.pug

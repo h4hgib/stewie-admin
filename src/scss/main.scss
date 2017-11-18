@@ -8,21 +8,55 @@ body {
 	background: orange;
 	width:100%;
 	margin:0;
-	padding:20px;
 	display:block;
-	overfloat:hidden;
 }
 
 .logo {float:left; display:block;}
-.title-break {float:left; border: 1px white; margin:5px 0;}
-.title-text {float:left; color:blue; font-size: 20px}
+.title-break {
+    float: left;
+    border-left: 2px solid white;
+    width: 11px;
+    height: 55px;
+    margin: 0 10px;
+}
+.title-text {float:left; color:blue; font-size: 20px; font-weight:bold;}
 
 .leftbar {
 	float:left;
+    vertical-align: middle;
+    height: 50px;
+    padding: 20px;
 }
 
 .rightbar {
 	float:right;
+    height: 50px;
+    padding: 20px;
+}
+
+.profile-icon {
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+    float: left;
+    margin:auto;
+    padding: 5px;
+    border: 3px solid lightblue;
+    vertical-align: middle;
+
+	background-color: grey;
+	background-image: url("../images/proficon.png");
+	background-size: cover;
+	background-position: center center;
+}
+
+.profile span {
+    vertical-align: middle;
+    margin:auto;
+    padding: 5px;
+    color: white;
+    font-size: 18px;
+    float: left;
 }
 
 .clearfix:after {
@@ -35,3 +69,48 @@ body {
 }
 
 .clearfix {display: inline-block;}
+
+.nav-menu {
+    margin:0px;
+    width: 20%;
+    display: block;
+    float: left;
+    background: grey;
+}
+
+.nav-menu div {
+    padding: 10px;
+    font-size: 18px;
+    background: lightgrey;
+    margin: 2px 1px;
+    color: blue;
+    border-left: 5px solid orange;
+}
+
+.nav-menu div:nth-child(0) {
+    border-left: 5px solid blue;
+}
+
+.main-content {
+    margin:0px;
+    padding: 0px;
+    width: 80%;
+    float: right;
+    background: blue;
+}
+
+footer {
+    clear: both;
+    background: grey;
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+footer div {
+    height: 50px;
+    padding: 5px;
+    float: left;
+    font-size: 18px;
+    display: block;
+}
