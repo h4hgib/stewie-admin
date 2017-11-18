@@ -123,12 +123,6 @@ class Childline {
             ':id'    => $this->getData('id')
         ));
 
-        var_dump( 'UPDATE '.$this->db->dbTbl['contact'].' SET '.$this->getData('field').' = :value WHERE id = :id');
-        var_dump(array(
-            ':value' => $this->getData('value'),
-            ':id'    => $this->getData('id')
-        ));
-
         if($res === false) {
             $this->output = array(
                 'success' => false,
