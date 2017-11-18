@@ -2,22 +2,10 @@ doctype
 html
     include ./partials/head.pug
 
-    div(class="body")
-        div(class="header")
-            div(class="leftbar")
-
-                div(class="title")
-                    p Title Text
-            div(class="rightbar")
-                img(class="profilepic", src="images/proficon.png")
-
-
     body(class='loading')
+
         div(class='app')
             include ./partials/layout/header.pug
-            p [ home page ]
-
-        div(class='testing')
-            p I am some default text
-
-        include ./partials/foot.pug
+            include ./partials/layout/navigation.pug
+            include ./partials/layout/content.pug
+            include ./partials/foot.pug

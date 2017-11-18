@@ -6,7 +6,7 @@ html
         div(class='app')
             include ./partials/layout/header.pug
 
-            include ./partials/layout/left-nav.pug
+            include ./partials/layout/navigation.pug
 
             div(class='centre-panel')
                 div(class='case-info')
@@ -161,7 +161,5 @@ html
                         input(type='hidden', name='follow_up', value='Unknown')
                         div(class='age', data-value='yes', data-input='follow_up') 0-1
                         div(class='age', data-value='no', data-input='follow_up') 2-4
-
-            include ./partials/layout/right-nav.pug
 
         include ./partials/foot.pug
