@@ -26,7 +26,7 @@ html
                         span 9-12
                         span Neighbour
 
-                    div(class='search-previous', id='search-previous')
+                    div(class='search-previous case-results', id='search-previous')
                         h1 Your Previous Cases
                         p(class='more') Show more
 
@@ -50,6 +50,28 @@ html
 
                                 div(class='case-view') View Case Details
 
-                    div(class='search-results', id='search-results')
+                    div(class='search-results case-results', id='search-results')
+                        h1 Case Search Results
+                        p(class='more') Show more
+
+                        div(class='cases')
+                            div(class='case')
+                                span(class='case-number') CN: 12345
+                                span(class='case-date') 12/11/17
+                                div(class='case-sex')
+                                div
+                                    span Age
+                                    span 13-16
+                                div
+                                    span Case Type
+                                    span AA Call
+                                div
+                                    span Primary Reason
+                                    span Teen Preg...
+                                div
+                                    span Follow Ups
+                                    span Yes
+
+                                div(class='case-view') View Case Details
 
         include ./partials/foot.pug

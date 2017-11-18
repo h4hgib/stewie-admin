@@ -81,6 +81,74 @@ class Childline {
     }
 
     /**
+     * Search cases
+     */
+    public function search() {
+        $this->checkValidUser();
+
+        $this->db->sql = 'SELECT * FROM '.$this->db->dbTbl['contact'].' WHERE 
+          `id` LIKE :search OR
+          `case_number` LIKE :search OR
+          `name_of_caller` LIKE :search OR
+          `name_of_volunteer` LIKE :search OR
+          `phone_number` LIKE :search OR
+          `name_mother` LIKE :search OR
+          `name_father` LIKE :search OR
+          `age` LIKE :search OR
+          `surname` LIKE :search OR
+          `address` LIKE :search OR
+          `school` LIKE :search OR
+          `notes` LIKE :search OR
+          `primary_call_reason` LIKE :search OR
+          `secondary_call_reason` LIKE :search OR
+          `referred_to` LIKE :search OR
+          `follow_up` LIKE :search OR
+          `anonymity` LIKE :search OR
+          `category` LIKE :search OR
+          `aa_custody_sergeant` LIKE :search OR
+          `aa_reason` LIKE :search OR
+          `aa_first_name_minor` LIKE :search OR
+          `aa_middle_name_minor` LIKE :search OR
+          `aa_surname_minor` LIKE :search OR
+          `aa_dob` LIKE :search OR
+          `aa_gender` LIKE :search OR
+          `aa_arrest_reason` LIKE :search OR
+          `aa_arresting_officer_name` LIKE :search OR
+          `aa_arresting_officer_number` LIKE :search OR
+          `aa_interviewed` LIKE :search OR
+          `aa_interviewers` LIKE :search OR
+          `aa_rights_read` LIKE :search OR
+          `aa_searched` LIKE :search OR
+          `aa_injuries` LIKE :search OR
+          `aa_injury_details` LIKE :search OR
+          `aa_others_involved` LIKE :search OR
+          `aa_case_notes` LIKE :search OR
+          `aa_your_action` LIKE :search OR
+          `aa_informed` LIKE :search OR
+          `aa_lawyer` LIKE :search OR
+          `timestamp` LIKE :search';
+
+        $res = $this->db->fetchAll(array(
+            ':search' => '%' . $this->getData('search') . '%'
+        ));
+
+        if($res === false) {
+            $this->output = array(
+                'success' => false,
+                'key'     => 'eols4'
+            );
+        } else {
+            $this->output = array(
+                'success' => true,
+                'key'     => 'flpwR',
+                'cases'   => $res
+            );
+        }
+
+        $this->renderOutput();
+    }
+
+    /**
      * Create a new contact
      */
     public function newContact() {

@@ -152,7 +152,7 @@ var app = function (app) {
         var res    = JSON.parse(xhr.responseText);
 
         if(res.success) {
-            app.addCases(res.cases,'search-results');
+            app.addCases(res.cases,'.search-results');
         } else {
             app.debug('XHR Fail');
         }
@@ -163,16 +163,23 @@ var app = function (app) {
      */
     app.addCases = function(cases, ele) {
         app.debug('app.addCases()');
-        var output = '',
-            date,fu,i;
+        var output      = '',
+            searchAreas = document.querySelectorAll('.case-results'),
+            date,month,fu,i;
+
+        for(i = 0; i < searchAreas.length; i++) {
+            searchAreas[i].style.display = 'none';
+        }
 
         for(i = 0; i < cases.length; i++) {
             date = new Date(cases[i].timestamp);
-            fu   = cases[i].follow_up === 'y' ? 'Yes' : 'No'.
-            output += '<div class="case"><span class="case-number") CN: '+ cases[i].id + '</span><span class="case-date") ' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</span><div class="case-sex ' + cases[i].sex + '"></div><div><span>Age</span><span>' + cases[i].age + '</span></div><div><span>Case Type</span><span>' + cases[i].category + '</span></div><div><span>Primary Reason</span><span>' + cases[i].primary_call_reason + '</span></div><div><span>Follow Ups</span><span>' + fu + '</span></div></div>';
+            month = date.getMonth() + 1;
+            fu   = cases[i].follow_up === 'y' ? 'Yes' : 'No';
+            output += '<div class="case"><span class="case-number">CN: '+ cases[i].id + '</span><span class="case-date">' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</span><div class="case-sex ' + cases[i].sex + '"></div><div><span>Age</span><span>' + cases[i].age + '</span></div><div><span>Case Type</span><span>' + cases[i].category + '</span></div><div><span>Primary Reason</span><span>' + cases[i].primary_call_reason + '</span></div><div><span>Follow Ups</span><span>' + fu + '</span></div></div>';
         }
 
-        document.getElementById(ele).innerHTML = output;
+        document.querySelector(ele).children[2].innerHTML = output;
+        document.querySelector(ele).style.display = 'block';
     }
 
     /**
