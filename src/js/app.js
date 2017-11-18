@@ -12,15 +12,6 @@ var app = function (app) {
         debug: {
             on: true
         },
-
-        /**
-         * Latitude and longitude of business
-         */
-        maps: {
-            lat: 36.126816,
-            lon: -5.352780
-        },
-
         url: window.location.host == 'localhost:3000' || window.location.host == 'childline.local' ? 'http://childline.local/' : 'http://www.childline.gi/'
     };
 
@@ -99,10 +90,15 @@ var app = function (app) {
         app.debug('app.loadPage()');
         var body    = document.getElementsByTagName('body')[0],
             actions = document.querySelectorAll('*[data-action]'),
+            agent   = document.querySelectorAll('.agent-name'),
             i;
 
         if (body.dataset.load) {
             app[body.dataset.load]();
+        }
+
+        for(i = 0; i < agent.length; i++) {
+            agent[i].innerHTML = localStorage.getItem('un');
         }
 
         for(i = 0; i < actions.length; i++) {
@@ -124,6 +120,60 @@ var app = function (app) {
             ele.onclick = app[method];
         }
     };
+
+    /**
+     * Home Page
+     */
+    app.home = function() {
+        app.debug('app.home()');
+        document.getElementById('search').addEventListener("keypress", app.search);
+    }
+
+    /**
+     * Search
+     */
+    app.search = function(e) {
+        if(e.code == 'Enter') {
+            app.debug('app.search()');
+            var data = [
+                    { name : 'p', val : 'search' },
+                    { name : 'search', val : document.getElementById('search').value }
+                ];
+
+            app.ajax(config.url + config.api, data, app.postSearch);
+        }
+    }
+
+    /**
+     * Search callback
+     */
+    app.postSearch = function(xhr) {
+        app.debug('app.postSearch()');
+        var res    = JSON.parse(xhr.responseText);
+
+        if(res.success) {
+            app.addCases(res.cases,'search-results');
+        } else {
+            app.debug('XHR Fail');
+        }
+    }
+
+    /**
+     * Add cases to the DOM
+     */
+    app.addCases = function(cases, ele) {
+        app.debug('app.addCases()');
+        var output = '',
+            date,fu,i;
+
+        for(i = 0; i < cases.length; i++) {
+            date = new Date(cases[i].timestamp);
+            fu   = cases[i].follow_up === 'y' ? 'Yes' : 'No'.
+            output += '<div class="case"><span class="case-number") CN: '+ cases[i].id + '</span><span class="case-date") ' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</span><div class="case-sex ' + cases[i].sex + '"></div><div><span>Age</span><span>' + cases[i].age + '</span></div><div><span>Case Type</span><span>' + cases[i].category + '</span></div><div><span>Primary Reason</span><span>' + cases[i].primary_call_reason + '</span></div><div><span>Follow Ups</span><span>' + fu + '</span></div></div>';
+        }
+
+        document.getElementById(ele).innerHTML = output;
+    }
 
     /**
      * Create a new user
@@ -212,8 +262,9 @@ var app = function (app) {
      */
     app.postNewContact = function(xhr) {
         app.debug('app.postNewContact()');
-        var formEle = document.querySelectorAll('input', 'textarea'),
+        var formEle = document.querySelectorAll('input, textarea'),
             res  = JSON.parse(xhr.responseText),
+            eles = document.querySelectorAll('*[data-input]'),
             date,month,i;
 
         if(res.success) {
@@ -226,11 +277,27 @@ var app = function (app) {
             for(i = 0; i < formEle.length; i++) {
                 formEle[i].onblur = app.saveForm;
             }
+
+            for(i = 0; i < eles.length; i++) {
+                eles[i].onclick = app.bindValue;
+            }
         } else {
             //app.logout();
             app.debug('XHR Fail');
         }
     };
+
+    /**
+     * Bind a value to a form element
+     */
+    app.bindValue = function(e) {
+        app.debug('app.bindValue()');
+        var details = e.target.dataset;
+
+        document.querySelector('[name="' + details.input + '"]').value = details.value;
+
+        app.saveForm({ target : document.querySelector('[name="' + details.input + '"]') });
+    }
 
     /**
      * Save a form to the databse
@@ -406,13 +473,3 @@ window.initMap = function () {
 };
 
 app.init();
-
-(function(){
-    //var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    //s1.async=true;
-    //s1.src='https://embed.tawk.to/5a1012d8bb0c3f433d4c9eb5/default';
-    //s1.charset='UTF-8';
-    //s1.setAttribute('crossorigin','*');
-    //s0.parentNode.insertBefore(s1,s0);
-})();
-//var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
