@@ -2,10 +2,11 @@
 body {
 	padding:0;
 	margin:0;
+    font-family: 'Lato', sans-serif;
 }
 
 .header {
-	background: orange;
+	background: #f1b715;
 	width:100%;
 	margin:0;
 	display:block;
@@ -19,7 +20,7 @@ body {
     height: 55px;
     margin: 0 10px;
 }
-.title-text {float:left; color:blue; font-size: 20px; font-weight:bold;}
+.title-text {float:left; color:#3f6cad; font-size: 20px; font-weight:bold;}
 
 .leftbar {
 	float:left;
@@ -72,23 +73,25 @@ body {
 
 .nav-menu {
     margin:0px;
+    padding: 0px;
     width: 20%;
     display: block;
     float: left;
-    background: grey;
+    background: white;
+    box-shadow: 5px 3px 7px 2px rgba(0, 0, 0, 0.1);
 }
 
 .nav-menu div {
     padding: 10px;
     font-size: 18px;
-    background: lightgrey;
-    margin: 2px 1px;
-    color: blue;
+    background: #efefef;
+    margin: 3px 0px;
+    color: #3f6cad;
     border-left: 5px solid orange;
 }
 
-.nav-menu div:nth-child(0) {
-    border-left: 5px solid blue;
+.nav-menu div:nth-child(1) {
+    margin-top: 0px;
 }
 
 .main-content {
@@ -96,8 +99,57 @@ body {
     padding: 0px;
     width: 80%;
     float: right;
-    background: blue;
+    background: #ecf2ff;
 }
+
+.case-log {
+    background: #dae7ff;
+    height: 50px;
+}
+
+.case-log span {
+    color: #3f6cad;
+    padding: 7px 13px;
+    display: inline-block;
+}
+
+.case-log .risk {
+    float: right;
+    width: 40%;
+    height: 50px;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#92ee92+0,feff00+33,efa91b+63,e62f2d+100 */
+    background: #92ee92; /* Old browsers */
+    background: -moz-linear-gradient(left, #92ee92 0%, #feff00 33%, #efa91b 63%, #e62f2d 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #92ee92 0%,#feff00 33%,#efa91b 63%,#e62f2d 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #92ee92 0%,#feff00 33%,#efa91b 63%,#e62f2d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92ee92', endColorstr='#e62f2d',GradientType=1 ); /* IE6-9 */
+}
+
+.case-log .risk-tick {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    height: 25px;
+    border-left: 2px solid black;
+    left: 75px;
+}
+
+.case-log .risk-tick span {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    top: 28px;
+    left: -35px;
+    color: black;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.steps {
+    margin-left: 20px;
+}
+
 
 footer {
     clear: both;
