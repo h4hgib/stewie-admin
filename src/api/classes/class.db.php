@@ -6,23 +6,21 @@ class Db {
     /**
      * DB connection details
      */
-    private $dbHost = 'db.supercars.gi';
-    private $dbName = 'supercarsgi';
-    private $dbUser = 'creativeanimal';
-    private $dbPass = 'EZY2WXr12';
+    private $dbHost = '...';
+    private $dbName = '...';
+    private $dbUser = '...';
+    private $dbPass = '...';
 
     public $dbh   = null;
     public $dbTbl = array(
-        'appointments'  => 'appointments',
-        'packages'      => 'packages',
-        'users'         => 'users',
-        'contact'       => 'contact'
+        'child' => 'child',
+        'user'  => 'user'
     );
 
     function __construct() {
         if(isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'supercars.local') {
             $this->dbHost = 'localhost';
-            $this->dbName = 'supercars';
+            $this->dbName = 'childline';
             $this->dbUser = 'root';
             $this->dbPass = '';
         }
