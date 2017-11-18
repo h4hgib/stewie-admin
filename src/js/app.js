@@ -158,7 +158,7 @@ var app = function (app) {
                 formEle[i].onblur = app.saveForm;
             }
         } else {
-            app.logout();
+            //app.logout();
             app.debug('XHR Fail');
         }
     };
