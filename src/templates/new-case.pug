@@ -2,7 +2,7 @@ doctype
 html
     include ./partials/head.pug
 
-    body(class='loading')
+    body(class='loading', data-load='newCase')
         div(class='app')
             include ./partials/layout/header.pug
 
@@ -10,8 +10,8 @@ html
 
             div(class='centre=panel')
                 div(class='case-info')
-                    p(class='case-number') #[strong Case Number] #[span aaa-aaa-aaa]
-                    p(class='time-log') #[strong Time Log] #[span 00:00 01/01/2017]
+                    p(class='case-number') #[strong Case Number] #[span(id='case-number') aaa-aaa-aaa]
+                    p(class='time-log') #[strong Time Log] #[span(id='time-log') 00:00 01/01/2017]
 
             div(class='step-one')
                 h2 Step #[span(class='step-icon') 1] Initial Child Profile
