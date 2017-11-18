@@ -28,7 +28,7 @@ You'll need the following installed:
 
 ## Setup
 
-Firstly, the site runs a PHP API, so you'll need to set up Apache to run in the directory you're installing the site in. Here we'll assume we're installing on `C:/xampp/supercars.gi/` but edit this to taste for your local configuration:
+Firstly, the site runs a PHP API, so you'll need to set up Apache to run in the directory you're installing the site in. Here we'll assume we're installing on `C:/xampp/h4h/` but edit this to taste for your local configuration:
 
 1)
 Edit your hosts file to point a test domain to your localhost (`C:\Windows\System32\drivers\etc\hosts`) in Windows. Add the lines:
