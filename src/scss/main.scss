@@ -153,8 +153,114 @@ body {
   }
 }
 
-.steps {
+.main-bar {
   margin-left: 20px;
+}
+
+
+/* Content Styles */
+
+.main-bar h2 {
+  color: #3f6cad;
+  margin: 12px 0 5px;
+}
+
+.main-bar .step-icon {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 0px 7px 1px 7px;
+  font-size: 23px;
+  background-color: orange;
+  color: white;
+  text-align: center;
+}
+
+.main-bar .hint {
+  margin: 8px 0px 12px;
+}
+
+.main-bar input[type=text] {
+  border: 0px;
+  padding: 10px;
+  width: 280px;
+  font-size: 18px;
+  height: 30px;
+  float: left;
+}
+
+.main-bar .helpit {
+  float: left;
+  margin-left: 30px;
+}
+
+.main-bar .unknown {
+    padding: 17px;
+    float: right;
+    margin: auto;
+    border-radius: 10%;
+    background: #fefefe;
+    font-weight: bold;
+    color: orange;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    background: -moz-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: -webkit-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: linear-gradient(to bottom, #fefefe 0%, #f8f7f7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );
+  }
+
+.main-bar .question-block {
+  display: block;
+  margin-top:20px;
+}
+
+.main-bar .enter-icon {
+  background: red;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.main-bar .age {
+    margin: 5px;
+    padding: 17px;
+    float: left;
+    border-radius: 10%;
+    background: #fefefe;
+    font-weight: bold;
+    color: orange;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    background: -moz-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: -webkit-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: linear-gradient(to bottom, #fefefe 0%, #f8f7f7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );
+
+}
+
+.main-bar .sex {
+    margin: 5px;
+    width: 100px;
+    height: 150px;
+    padding: 17px;
+    float: left;
+    border-radius: 3% 3% ;
+    background: #fefefe;
+    font-weight: bold;
+    color: orange;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    background: -moz-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: -webkit-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: linear-gradient(to bottom, #fefefe 0%, #f8f7f7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );
+
+}
+
+.main-bar textarea {
+  border: 0;
+  width: 90%;
+  height: 103px;
+  padding: 17px;
+  margin: 10px;
 }
 
 footer {

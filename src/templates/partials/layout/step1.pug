@@ -1,27 +1,36 @@
 div(class='step-one')
+
     h2 Step #[span(class='step-icon') 1] Initial Child Profile
     p(class='hint') Enter caller name. If the caller wants to remain anonymous select "Unknown"
-    input(type='text', name='name_of_caller', placeholder='Name: Eg. Andrew')
-    div(class='btn', data-value='Unknown' data-input='name') Unknown?
 
-    input(type='hidden', name='sex' value='m')
-    div(class='sex male', data-value='m', data-input='sex')
-    div(class='sex female', data-value='f', data-input='sex')
-    div(class='btn', data-value='u' data-input='sex') Unknown?
+    div(class='question-block clearfix')
+        input(type='text', name='name_of_caller', placeholder='Name: Eg. Andrew')
+        p(class='helpit') Press #[span(class='enter-icon')] Enter
+        div(class='btn-right unknown', data-value='Unknown' data-input='name') Unknown?
 
-    h2 Caller Age
-    input(type='hidden', name='age', value='Unknown')
-    div(class='age', data-value='0-1', data-input='age') 0-1
-    div(class='age', data-value='2-4', data-input='age') 2-4
-    div(class='age', data-value='5-8', data-input='age') 5-8
-    div(class='age', data-value='9-12', data-input='age') 9-12
-    div(class='age', data-value='13-16', data-input='age') 13-16
-    div(class='age', data-value='17', data-input='age') 17
-    div(class='age', data-value='18', data-input='age') 18
-    div(class='age', data-value='Adult', data-input='age') Adult
+    div(class='question-block clearfix')
+        input(type='hidden', name='sex' value='m')
+        div(class='sex male', data-value='m', data-input='sex') Male
+        div(class='sex female', data-value='f', data-input='sex') Female
+        div(class='btn-right unknown', data-value='Unknown' data-input='name') Unknown?
+
+    h3 Caller Age
+
+    div(class='question-block clearfix')
+        div(class='age', data-value='0-1', data-input='age') 0-1
+        div(class='age', data-value='2-4', data-input='age') 2-4
+        div(class='age', data-value='5-8', data-input='age') 5-8
+        div(class='age', data-value='9-12', data-input='age') 9-12
+        div(class='age', data-value='13-16', data-input='age') 13-16
+        div(class='age', data-value='17', data-input='age') 17
+        div(class='age', data-value='18', data-input='age') 18
+        div(class='age', data-value='Adult', data-input='age') Adult
+        input(type='hidden', name='age', value='Unknown')
 
     h2 Call Notes
-    p(class='hint') Enter any information you feel relevant in the notes section, this will save to the case file automatically.
-    div(class='auto-save')
-        div(class='on-off') On
-    textarea(name='notes')
+    
+    div(class='question-block clearfix')
+    p(class='hint') Enter any information you feel relevant in the notes section. This will save to the case file automatically.
+    textarea(type='text', name='callnotes', placeholder='Name: Eg. Andrew')
+
+
