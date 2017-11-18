@@ -2,44 +2,27 @@ doctype
 html
     include ./partials/head.pug
 
-    body(class='loading', data-load='newCase')
+    body(class='loading', data-load='getUsers')
         div(class='app')
             include ./partials/layout/header.pug
 
             include ./partials/layout/navigation.pug
 
             div(class='centre-panel')
-                div(class='case-info')
-                    p(class='case-number') #[strong Case Number] #[span(id='case-number') aaa-aaa-aaa]
-                    p(class='time-log') #[strong Time Log] #[span(id='time-log') 00:00 01/01/2017]
+                div(class='new-user')
+                    h2 New User
+                    label(for='name') Username
+                    input(type='text', name='username', id='username')
 
-            div(class='step-one')
-                h2 Step #[span(class='step-icon') 1] Initial Child Profile
-                p(class='hint') Enter caller name. If the caller wants to remain anonymous select "Unknown"
-                input(type='text', name='name_of_caller', placeholder='Name: Eg. Andrew')
-                div(class='btn', data-value='Unknown' data-input='name') Unknown?
+                    label(for='password') Password
+                    input(type='password', name='password', id='password')
 
-                input(type='hidden', name='sex' value='m')
-                div(class='sex male', data-value='m', data-input='sex')
-                div(class='sex female', data-value='f', data-input='sex')
-                div(class='btn', data-value='u' data-input='sex') Unknown?
+                    label(for='password') Confirm Password
+                    input(type='password', name='password-confirm', id='passwordC')
 
-                h2 Caller Age
-                input(type='hidden', name='age', value='Unknown')
-                div(class='age', data-value='0-1', data-input='age') 0-1
-                div(class='age', data-value='2-4', data-input='age') 2-4
-                div(class='age', data-value='5-8', data-input='age') 5-8
-                div(class='age', data-value='9-12', data-input='age') 9-12
-                div(class='age', data-value='13-16', data-input='age') 13-16
-                div(class='age', data-value='17', data-input='age') 17
-                div(class='age', data-value='18', data-input='age') 18
-                div(class='age', data-value='Adult', data-input='age') Adult
+                    button(name='submit' data-action='newUser') Save
 
-                h2 Call Notes
-                p(class='hint') Enter any information you feel relevant in the notes section, this will save to the case file automatically.
-                div(class='auto-save')
-                    div(class='on-off') On
-                textarea(name='notes')
+                div(id='user-list')
 
 
         include ./partials/foot.pug
