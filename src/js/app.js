@@ -1,13 +1,6 @@
 'use strict';
 
 /**
- * Load the Google map instance
- */
-var initMap = function initMap() {
-    app.initMap();
-};
-
-/**
  * The main app instance
  */
 var app = function (app) {
@@ -28,7 +21,7 @@ var app = function (app) {
             lon: -5.352780
         },
 
-        url: window.location.host == 'localhost:3000' ? 'http://childline.local/' : 'http://www.supercars.gi/'
+        url: window.location.host == 'localhost:3000' || window.location.host == 'childline.local' ? 'http://childline.local/' : 'http://www.childline.gi/'
     };
 
     /**
@@ -133,54 +126,76 @@ var app = function (app) {
     };
 
     /**
-     * Page specific code for contact
+     * Page specific code for new contact
      */
-    app.contact = function() {
-        app.debug('app.contact()');
-        let validator = new FormValidator('contact-form', [
-            {
-                name  : 'name',
-                rules : 'required|min_length[2]'
-            },
-            {
-                name  : 'email',
-                rules : 'required|valid_email'
-            },
-            {
-                name  : 'message',
-                rules : 'required|min_length[10]'
-            }
-        ], app.sendContact);
+    app.newCase = function() {
+        app.debug('app.newCase()');
+        var data = [
+                { name : 'p', val : 'newContact' }
+            ];
+
+        app.ajax(config.url + config.api, data, app.postNewContact);
     };
 
     /**
-     * Submit a contact form submission
-     *
-     *  @param Object errors The errros from validate.js
-     *  @param Object e The event
+     * Callback after new case created
      */
-    app.sendContact = function(errors, e) {
-        e.preventDefault();
-        app.debug('app.sendContact()');
-        var name    = document.getElementById('name').value,
-            email   = document.getElementById('email').value,
-            phone   = document.getElementById('phone').value,
-            message = document.getElementById('message').value,
-            data    = [];
+    app.postNewContact = function(xhr) {
+        app.debug('app.postNewContact()');
+        var formEle = document.querySelectorAll('input', 'textarea'),
+            data = '',
+            res  = JSON.parse(xhr.responseText),
+            date,month,i;
 
-        if(app.renderFormErrors(errors) === false) {
-            return;
+        if(res.success) {
+            date = new Date();
+            date.setTime = res.timestamp;
+            month = date.getMonth()+1;
+            document.getElementById('case-number').innerHTML = res.caseId;
+            document.getElementById('time-log').innerHTML    = date.getHours() + ':' + date.getMinutes() + ' ' + date.getDate() + '/' + month + '/' + date.getFullYear();
+
+            for(i = 0; i < formEle.length; i++) {
+                formEle[i].onblur = app.saveForm;
+            }
+        } else {
+            app.logout();
+            app.debug('XHR Fail');
         }
+    };
+
+    /**
+     * Save a form to the databse
+     */
+    app.saveForm = function(e) {
+        app.debug('app.saveForm');
+        var field = e.target.name,
+            value = e.target.value,
+            data  = [];
 
         data = [
-            { name : 'p',       val : 'contact' },
-            { name : 'name',    val : name },
-            { name : 'email',   val : email },
-            { name : 'phone',   val : phone },
-            { name : 'message', val : message }
+            { name : 'p',       val : 'saveContact' },
+            { name : 'id',      val : document.getElementById('case-number').innerHTML },
+            { name : 'field',   val : field },
+            { name : 'value',   val : value }
         ];
 
-        app.ajax(config.url + config.api, data, app.postContact);
+        app.ajax(config.url + config.api, data, app.postSaveContact);
+    }
+
+    /**
+     * Callback after field save
+     */
+    app.postSaveContact = function(xhr) {
+        app.debug('app.postSaveContact()');
+        var data = '',
+            res  = JSON.parse(xhr.responseText);
+
+        if(res.success) {
+            app.debug('saved ok');
+        } else {
+            alert('failed to save');
+            app.debug('XHR Fail');
+        }
     };
 
     /**
@@ -231,25 +246,6 @@ var app = function (app) {
     };
 
     /**
-     * Grab the results of the contact submission
-     *
-     *  @param Object xhr The xhr response
-     */
-    app.postContact = function(xhr) {
-        app.debug('app.postContact()');
-        var data = '',
-            res  = JSON.parse(xhr.responseText);
-
-        if(res.success) {
-            document.getElementById('form-error').innerHTML = 'Your message was sent successfully! We\'ll be in touch as soon as we can.';
-            document.getElementById('contactForm').style.display = 'none';
-        } else {
-            document.getElementById('form-error').innerHTML = 'Oh no, you sent us something, but we didn\'t recieve it right';
-            app.debug('XHR Fail');
-        }
-    };
-
-    /**
      * Page specific code for login
      */
     app.adminLogin = function() {
@@ -295,7 +291,7 @@ var app = function (app) {
             adminUser.innerHTML = localStorage.getItem('un');*/
             //document.getElementById('userCon').innerHTML = localStorage.getItem('un');
 
-            window.location.href = config.url + 'admin-bookings.html';
+            window.location.href = config.url + 'new-case.html';
         } else {
             app.debug('XHR Fail');
             app.cache.un = null;
@@ -326,27 +322,6 @@ var app = function (app) {
         }
     };
 
-    /** Google Maps script **/
-
-    app.loadGoogleMaps = function () {
-        var myLatLng = {
-            lat: config.maps.lat,
-            lng: config.maps.lon
-        };
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 17,
-            center: myLatLng,
-            scrollwheel: false
-        });
-
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Supercars.gi'
-        });
-    };
-
     /**
      * Show / hide loading spinner
      */
@@ -362,3 +337,13 @@ window.initMap = function () {
 };
 
 app.init();
+
+(function(){
+    //var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    //s1.async=true;
+    //s1.src='https://embed.tawk.to/5a1012d8bb0c3f433d4c9eb5/default';
+    //s1.charset='UTF-8';
+    //s1.setAttribute('crossorigin','*');
+    //s0.parentNode.insertBefore(s1,s0);
+})();
+//var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

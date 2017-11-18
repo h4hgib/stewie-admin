@@ -5,6 +5,15 @@ html
     body(class='loading', data-load='adminLogin')
         include ./partials/layout/header.pug
         div(class='app')
-            p [admin login ]
+            h1 Login
+            div(class='form-error', id='form-error')
+                form(name='login-form', class='login-form')
+                    div
+                        label(for='username') Username
+                        input(name='username', id='username', type='text')
+                    div
+                        label(for='password') Password
+                        input(name='password', id='password', type='password')
+                    button(id='login', class='btn') Login
 
         include ./partials/foot.pug

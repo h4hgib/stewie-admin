@@ -13,12 +13,13 @@ class Db {
 
     public $dbh   = null;
     public $dbTbl = array(
-        'child' => 'child',
-        'user'  => 'user'
+        'children' => 'children',
+        'contact'  => 'contact',
+        'users'    => 'user'
     );
 
     function __construct() {
-        if(isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'supercars.local') {
+        if(isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'childline.local') {
             $this->dbHost = 'localhost';
             $this->dbName = 'childline';
             $this->dbUser = 'root';
@@ -37,11 +38,11 @@ class Db {
      */
     public function getDb() {
         if($this->dbh===null) {
-            //if($_SERVER['SERVER_ADDR']==='127.0.0.1') {
-                //$this->dbh = new PDO("mysql:host=$this->LdbHost;dbname=$this->LdbName", $this->LdbUser, $this->LdbPass);
-            //} else {
+            if($_SERVER['SERVER_ADDR']==='127.0.0.1') {
                 $this->dbh = new PDO("mysql:host=$this->dbHost;dbname=$this->dbName", $this->dbUser, $this->dbPass);
-            //}
+            } else {
+                $this->dbh = new PDO("mysql:host=$this->dbHost;dbname=$this->dbName", $this->dbUser, $this->dbPass);
+            }
         }
         return $this->dbh;
     }

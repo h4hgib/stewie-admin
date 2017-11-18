@@ -80,18 +80,53 @@ class Childline {
         $this->renderOutput();
     }
 
+    /**
+     * Create a new contact
+     */
+    public function newContact() {
+        $this->checkValidUser();
+        $this->db->sql = 'INSERT INTO '.$this->db->dbTbl['contact'].' () VALUES ()';
+
+        $res = $this->db->execute();
+
+        if($res === false) {
+            $this->output = array(
+                'success' => false,
+                'key'     => 'sdfU7'
+            );
+        } else {
+            $this->output = array(
+                'success'   => true,
+                'key'       => 'sdfE5',
+                'caseId'    => $this->db->getLastInsertId(),
+                'timestamp' => time()
+            );
+        }
+
+        $message = 'New Message From: '.$this->getData('name').'<br><br>'.'Email: '.$this->getData('email').'<br><br>'.'Phone: '.$this->getData('phone').'<br><br>'.'Message:<br><br>'.nl2br($this->getData('message'));
+
+        require_once 'class.mailer.php';
+
+        $m = new CreativeAnimalMail('stu.tippett@gmail.com', 'Childline Contact', 'New Message', $message);
+
+        $this->renderOutput();
+    }
 
     /**
-     * Save a new contact form submission
+     * Save a field to the db
      */
-    public function contact() {
-        $this->db->sql = 'INSERT INTO '.$this->db->dbTbl['contact'].' (name, email, phone, message) VALUES (:name, :email, :phone, :message)';
+    public function saveContact() {
+        $this->db->sql = 'UPDATE '.$this->db->dbTbl['contact'].' SET '.$this->getData('field').' = :value WHERE id = :id';
 
         $res = $this->db->execute(array(
-            ':name'    => $this->getData('name'),
-            ':email'   => $this->getData('email'),
-            ':phone'   => $this->getData('phone'),
-            ':message' => $this->getData('message')
+            ':value' => $this->getData('value'),
+            ':id'    => $this->getData('id')
+        ));
+
+        var_dump( 'UPDATE '.$this->db->dbTbl['contact'].' SET '.$this->getData('field').' = :value WHERE id = :id');
+        var_dump(array(
+            ':value' => $this->getData('value'),
+            ':id'    => $this->getData('id')
         ));
 
         if($res === false) {
@@ -105,12 +140,6 @@ class Childline {
                 'key'     => 'gSeD5'
             );
         }
-
-        $message = 'New Message From: '.$this->getData('name').'<br><br>'.'Email: '.$this->getData('email').'<br><br>'.'Phone: '.$this->getData('phone').'<br><br>'.'Message:<br><br>'.nl2br($this->getData('message'));
-
-        require_once 'class.mailer.php';
-
-        $m = new CreativeAnimalMail('stu.tippett@gmail.com', 'Childline Contact', 'New Message', $message);
 
         $this->renderOutput();
     }
