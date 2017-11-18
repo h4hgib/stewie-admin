@@ -1,0 +1,27 @@
+doctype
+html
+    include ./partials/head.pug
+
+    body(class='loading', data-load='contact')
+        div(class='app')
+            include ./partials/layout/header.pug
+            h4 Contact Form
+            div(id='form-error')
+            form(id='contactForm', name='contact-form', class="theContactBox")
+                div
+                    label(for='name') Name :
+                    input(type='text', id='name', name='name')
+                div
+                    label(for='email') Email :
+                    input(type='text', id='email', name='email')
+                div
+                    label(for='phone') Phone :
+                    input(type='text', id='phone', name='phone')
+                div
+                    label(for='message') Message :
+                    textarea(id='message', name='message', rows='15', cols='20')
+                div
+                    label(for='button')
+                    button(id='contact', class='btn') Send
+
+        include ./partials/foot.pug
