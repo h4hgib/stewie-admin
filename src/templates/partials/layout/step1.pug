@@ -1,4 +1,4 @@
-div(class='step-one')
+div(class='step step-one')
 
     h2 Step #[span(class='step-icon') 1] Initial Child Profile
     p(class='hint') Enter caller name. If the caller wants to remain anonymous select "Unknown"
@@ -12,11 +12,12 @@ div(class='step-one')
         input(type='hidden', name='sex' value='m')
         div(class='sex male', data-value='m', data-input='sex') Male
         div(class='sex female', data-value='f', data-input='sex') Female
-        div(class='btn-right unknown', data-value='Unknown' data-input='name') Unknown?
+        div(class='btn-right unknown', data-value='Unknown' data-input='sex') Unknown?
 
     h3 Caller Age
 
     div(class='question-block clearfix')
+        input(type='hidden', name='age', value='Unknown')
         div(class='age', data-value='0-1', data-input='age') 0-1
         div(class='age', data-value='2-4', data-input='age') 2-4
         div(class='age', data-value='5-8', data-input='age') 5-8
@@ -25,12 +26,5 @@ div(class='step-one')
         div(class='age', data-value='17', data-input='age') 17
         div(class='age', data-value='18', data-input='age') 18
         div(class='age', data-value='Adult', data-input='age') Adult
-        input(type='hidden', name='age', value='Unknown')
-
-    h2 Call Notes
-    
-    div(class='question-block clearfix')
-        p(class='hint') Enter any information you feel relevant in the notes section. This will save to the case file automatically.
-    textarea(type='text', name='callnotes', placeholder='Name: Eg. Andrew')
 
 

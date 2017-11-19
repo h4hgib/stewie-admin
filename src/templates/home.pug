@@ -2,78 +2,13 @@ doctype
 html
     include ./partials/head.pug
 
-    body(class='loading', data-load='home')
+    body(class='loading', data-load='newCase')
         div(class='app')
             include ./partials/layout/header.pug
 
+            include ./partials/layout/content-home.pug
             include ./partials/layout/navigation.pug
 
-            div(class='main-content')
-                div(class='welcome')
-                    div(class="top-bar")
-                        p Welcome to your user area #[strong(class='agent-name') Agent]
-
-                    div(class="main-bar")
-                        h1 Search Cases
-
-                        div(class='btn-search') Open Search
-                        div(class='btn-search') Date
-
-                        input(type='text', id='search', name='search', placeholder='Keywords: e.g. Case no, Child Name, School...')
-                        p(class='search-suggestions')
-                            span Bayside
-                            span Bishop's
-                            span Westside
-                            span Bullying
-                            span 9-12
-                            span Neighbour
-
-                        div(class='search-previous case-results', id='search-previous')
-                            h1 Your Previous Cases
-                            p(class='more') Show more
-
-                            div(class='cases')
-                                div(class='case')
-                                    span(class='case-number') CN: 12345
-                                    span(class='case-date') 12/11/17
-                                    div(class='case-sex')
-                                    div
-                                        span Age
-                                        span 13-16
-                                    div
-                                        span Case Type
-                                        span AA Call
-                                    div
-                                        span Primary Reason
-                                        span Teen Preg...
-                                    div
-                                        span Follow Ups
-                                        span Yes
-
-                                    div(class='case-view') View Case Details
-
-                        div(class='search-results case-results', id='search-results')
-                            h1 Case Search Results
-                            p(class='more') Show more
-
-                            div(class='cases')
-                                div(class='case')
-                                    span(class='case-number') CN: 12345
-                                    span(class='case-date') 12/11/17
-                                    div(class='case-sex')
-                                    div
-                                        span Age
-                                        span 13-16
-                                    div
-                                        span Case Type
-                                        span AA Call
-                                    div
-                                        span Primary Reason
-                                        span Teen Preg...
-                                    div
-                                        span Follow Ups
-                                        span Yes
-
-                                    div(class='case-view') View Case Details
+        include ./partials/layout/notepad.pug
 
         include ./partials/foot.pug
