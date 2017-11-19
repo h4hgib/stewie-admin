@@ -8,21 +8,7 @@ html
 
             include ./partials/layout/navigation.pug
 
-            div(class='centre-panel')
-                div(class='new-user')
-                    h2 New User
-                    label(for='name') Username
-                    input(type='text', name='username', id='username')
-
-                    label(for='password') Password
-                    input(type='password', name='password', id='password')
-
-                    label(for='password') Confirm Password
-                    input(type='password', name='password-confirm', id='passwordC')
-
-                    button(name='submit' data-action='newUser') Save
-
-                div(id='user-list')
+            include ./partials/layout/content-admin.pug
 
 
         include ./partials/foot.pug
