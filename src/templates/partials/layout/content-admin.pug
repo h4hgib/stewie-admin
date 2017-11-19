@@ -1,0 +1,19 @@
+div(class="main-content")
+    div(class='new-user section')
+        h2 New User
+
+        div(class='question-block clearfix')
+            label(for='name') Username
+            input(type='text', name='username', id='username')
+
+        div(class='question-block clearfix')
+            label(for='password') Password
+            input(type='password', name='password', id='password')
+
+        div(class='question-block clearfix')
+            label(for='password') Confirm Password
+            input(type='password', name='password-confirm', id='passwordC')
+
+        button(name='submit' data-action='newUser') Save
+
+    div(id='user-list')
