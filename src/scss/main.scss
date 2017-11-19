@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
+  background: #ecf2ff;
 }
 
 .header {
@@ -9,6 +10,24 @@ body {
   width: 100%;
   margin: 0;
   display: block;
+}
+
+.app {
+  width: 70%;
+  float: left;
+}
+
+.notes {
+  width: 30%;
+  float: right;
+  background: #40475d;
+  height: 100%;
+  display: block;
+  color: white;
+}
+
+.notes p{
+  padding: 10px;
 }
 
 .logo {
@@ -109,7 +128,7 @@ body {
   background: #ecf2ff;
 }
 
-.case-log {
+.top-bar {
   background: #dae7ff;
   height: 50px;
   span {
@@ -181,7 +200,9 @@ body {
 }
 
 .main-bar input[type=text] {
+  clear: left;
   border: 0px;
+  margin: 5px;
   padding: 10px;
   width: 280px;
   font-size: 18px;
@@ -189,15 +210,54 @@ body {
   float: left;
 }
 
-.main-bar .helpit {
+input[type=text] {
+  border: 0px;
+  margin: 5px;
+  padding: 10px;
+  width: 280px;
+  font-size: 18px;
+  height: 30px;
+}
+
+.main-bar select {
+  margin: 5px;
+  border: 0px;
+  padding: 10px;
+  width: 280px;
+  font-size: 18px;
+  height: 50px;
   float: left;
-  margin-left: 30px;
+}
+
+select {
+  margin: 5px;
+  border: 0px;
+  padding: 10px;
+  width: 280px;
+  font-size: 18px;
+  height: 50px;
+  
+}
+
+.main-bar select.extra {
+  margin: 5px 50px;
+  border: 0px;
+  padding: 10px;
+  width: 280px;
+  font-size: 18px;
+  height: 50px;
+  float: left;
+}
+
+.main-bar .helpit {
+    float: left;
+    margin: 18px 15px;
 }
 
 .main-bar .unknown {
     padding: 17px;
     float: right;
-    margin: auto;
+    margin: auto 50px;
     border-radius: 10%;
     background: #fefefe;
     font-weight: bold;
@@ -219,6 +279,21 @@ body {
   width: 20px;
   height: 20px;
   display: inline-block;
+}
+
+.main-bar .btn-search {
+    margin: 5px;
+    padding: 17px;
+    border-radius: 10%;
+    background: #fefefe;
+    font-weight: bold;
+    color: orange;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    background: -moz-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: -webkit-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: linear-gradient(to bottom, #fefefe 0%, #f8f7f7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );
+
 }
 
 .main-bar .age {
@@ -255,7 +330,22 @@ body {
 
 }
 
-.main-bar textarea {
+.main-bar .category {
+    margin: 5px;
+    padding: 17px;
+    float: left;
+    border-radius: 3% 3% ;
+    background: #fefefe;
+    font-weight: bold;
+    color: orange;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    background: -moz-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: -webkit-linear-gradient(top, #fefefe 0%, #f8f7f7 100%);
+    background: linear-gradient(to bottom, #fefefe 0%, #f8f7f7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );  
+}
+
+textarea {
   border: 0;
   width: 90%;
   height: 103px;
