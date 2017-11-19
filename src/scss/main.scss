@@ -43,7 +43,7 @@ body {
 }
 
 .notes .closeIcon {
-    background: blue;
+    background: #3e6cad;
     width: 30px;
     float: left;
     height: 30px;
@@ -96,9 +96,9 @@ body {
   float: left;
   margin: auto;
   padding: 5px;
-  border: 3px solid lightblue;
+  border: 3px solid #d2e1f7;
   vertical-align: middle;
-  background-color: grey;
+  background-color: #f6f7f9;
   background-image: url(../images/proficon.png);
   background-size: cover;
   background-position: center center;
@@ -336,7 +336,7 @@ select {
 .add-icon {
   width: 30px;
   height: 30px;
-  background: blue;
+  background: #3e6cad;
   float: left;
 }
 
@@ -345,10 +345,18 @@ select {
   display: inline-block;
 }
 
+.main-bar h2.case-search-txt {
+    float: left;
+    margin: 17px 50px 20px 10px !important;
+}
+
 .main-bar .btn-search {
     margin: 5px;
     padding: 17px;
-    border-radius: 10%;
+    float: left;
+    width: 100px;
+    text-align: center;
+    border-radius: 5% 6%;
     background: #fefefe;
     font-weight: bold;
     color: orange;
@@ -374,6 +382,26 @@ select {
     background: linear-gradient(to bottom, #fefefe 0%, #f8f7f7 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );
 
+}
+
+.search-suggestions span {
+    color: #3e6cad;
+    padding: 5px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.question-block h2 {
+  float: left;
+}
+
+.question-block .more {
+  color: #3e6cad;
+  margin-right: 50px;
+  padding: 5px;
+  text-decoration: underline;
+  font-weight: bold;
+  float: right;
 }
 
 .main-bar .sex {
@@ -439,4 +467,99 @@ footer {
     font-size: 18px;
     display: block;
   }
+}
+
+.cases {
+  clear: both;
+}
+
+.case {
+    float: left;
+    padding: 10px;
+}
+
+.case-main {
+  width: 200px;
+  position: relative;
+  display: inline-block;
+  background: white;
+  border-radius: 7px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  color: #3e6cad;
+  z-index: 3;
+}
+
+.case-number {
+  float: left;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 7px;
+  display: inline-block;
+}
+
+.case-date {
+  float: right;
+  padding: 7px;
+  display: inline-block;
+}
+
+.case.male .case-sex {
+  background: #3e6cad;  
+}
+
+.case.female .case-sex {
+  background: #efa31d;  
+}
+
+.case-sex {
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  vertical-align: center;
+  font-size: 60px;
+  clear: both;
+  display: inline-block;
+  width: 60px;
+  height: 75px;
+  margin: 40px auto 20px;
+  padding: 20px 0px!important 10px;
+}
+
+.case-main div {
+  padding: 5px 15px;
+  clear: both;
+  display: block;
+}
+
+.case span:nth-child(1) {
+  float: left;
+}
+
+.case span:nth-child(2) {
+  float: right;
+  font-weight: bold;
+}
+
+.case.male .case-view {
+  background: #3e6cad;  
+}
+
+.case.female .case-view {
+  background: #efa31d;  
+}
+
+.case-view {
+  font-size: 12px;
+  width: 200px;
+  height: 25px;
+  color: white;
+  position: relative;
+  font-weight: bold;
+  top: -25px;
+  padding-top: 30px;
+  z-index: 1;
+  border-radius: 7px;
+  text-align: center;
+  text-decoration: underline;
 }
