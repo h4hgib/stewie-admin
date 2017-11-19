@@ -79,6 +79,17 @@ gulp.task('js', function() {
         .pipe(concat('index.js'))
         .pipe(gulp.dest('./www/js'));
 
+    gulp.src(['./src/js/chart.js'])
+        .pipe(plumber({
+            errorHandler: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        //.pipe(uglify())
+        .pipe(concat('chart.js'))
+        .pipe(gulp.dest('./www/js'));
+
     return gulp.src(['./src/js/admin.js'])
         .pipe(plumber({
             errorHandler: function (err) {

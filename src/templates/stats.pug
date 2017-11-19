@@ -1,0 +1,25 @@
+doctype
+html
+    include ./partials/head.pug
+
+    body(class='loading')
+        div(class='app')
+            include ./partials/layout/header.pug
+
+            div(class="main-content")
+                h1 Stats
+
+                canvas(id="gender", width="457", height="228", class="chartjs-render-monitor", style="display: block; height: 183px; width: 366px;")
+                canvas(id="age", width="457", height="228", class="chartjs-render-monitor", style="display: block; height: 183px; width: 366px;")
+                canvas(id="reasonsP", width="457", height="228", class="chartjs-render-monitor", style="display: block; height: 183px; width: 366px;")
+                canvas(id="reasonsS", width="457", height="228", class="chartjs-render-monitor", style="display: block; height: 183px; width: 366px;")
+                canvas(id="anon", width="457", height="228", class="chartjs-render-monitor", style="display: block; height: 183px; width: 366px;")
+                canvas(id="callType", width="457", height="228", class="chartjs-render-monitor", style="display: block; height: 183px; width: 366px;")
+
+                script(src='http://www.chartjs.org/dist/2.7.1/Chart.bundle.js')
+                script(src='js/chart.js')
+            include ./partials/layout/navigation.pug
+
+        include ./partials/layout/notepad.pug
+
+        include ./partials/foot.pug
