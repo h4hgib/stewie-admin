@@ -1,141 +1,313 @@
-div(class='step-two')
+div(class='step step-two')
 
     h2 Step #[span(class='step-icon') 2] Extra Case Information
     p(class='hint') Please try to collect as much information as possible, if there is no info to collect please press "Unknown"
 
+    h2 Contact Method
+    div(class='question-block clearfix')
+        input(type='hidden', name='contact-method', value='Other')
+        div(class='contact-method', data-value='Other', data-input='contact-method') Other
+        div(class='contact-method', data-value='Phone', data-input='contact-method') Phone
+        div(class='contact-method', data-value='Live Chat', data-input='contact-method') Live Chat
+        div(class='contact-method', data-value='Email', data-input='contact-method') Email
+
     h2 Case Type
     div(class='question-block clearfix')
         input(type='hidden', name='category', value='Unknown')
-        div(class='category', data-value='Child', data-input='category') Child
-        div(class='category', data-value='Referral', data-input='category') Referral
         div(class='category', data-value='Diverse', data-input='category') Diverse
+        div(class='category', data-value='Referral', data-input='category') Referral
+        div(class='category', data-value='Request For Information', data-input='category') Request For Information
         div(class='category', data-value='AA Call', data-input='category') AA Call
 
-    h2 Names
-    div(class='question-block clearfix')
-        input(type='text', name='surname', placeholder='Family Name: e.g. Smith')
-        p(class='helpit') Press #[span(class='enter-icon')] Enter
-        input(type='text', name='name_mother', placeholder='Mother\'s Name: e.g. Genaika')
-        p(class='helpit') #[span(class='enter-icon')]
-        input(type='text', name='name_father', placeholder='Father\'s Name: e.g. Jack')
-        p(class='helpit') #[span(class='enter-icon')]
-        input(type='text', name='other', placeholder='Other: e.g. Jen')
-        select(class="extra" name='relationship')
-            option(value='') Relationship?
-            option(value='Aunt') Aunt
-            option(value='Uncle') Uncle
-
-    h2 Addresses
-    div(class='question-block clearfix')
-        textarea(name='address')
-
-    h2 School / Club
-    div(class='question-block clearfix')
-        input(type='text', name='school', placeholder='E.g Bayside')
-
-    h2 Others Involved
-    div(class='section')
-        div(class='person')
-            h3 Person 1
-            div(class='question-block clearfix')
-                input(type='text', name='name_of_other[]', placeholder='Name: e.g. Greg')
-                div(class='btn-right unknown', data-value='Unknown' data-input='name_of_other[]') Unknown?
-            div(class='question-block clearfix')
-                input(type='hidden', name='sex_of_other[]' value='m')
-                div(class='sex male', data-value='m', data-input='sex_of_other[]') Male
-                div(class='sex female', data-value='f', data-input='sex_of_other[]') Female
-                div(class='btn-right unknown', data-value='u' data-input='sex_of_other[]') Unknown?
-
-            h3 Age
-            div(class='question-block clearfix')
-                input(type='hidden', name='age_of_other[]', value='Unknown')
-                div(class='age', data-value='0-1', data-input='age_of_other[]') 0-1
-                div(class='age', data-value='2-4', data-input='age_of_other[]') 2-4
-                div(class='age', data-value='5-8', data-input='age_of_other[]') 5-8
-                div(class='age', data-value='9-12', data-input='age_of_other[]') 9-12
-                div(class='age', data-value='13-16', data-input='age_of_other[]') 13-16
-                div(class='age', data-value='17', data-input='age_of_other[]') 17
-                div(class='age', data-value='18', data-input='age_of_other[]') 18
-                div(class='age', data-value='Adult', data-input='age_of_other[]') Adult
-                div(class='btn-right unknown', data-value='Unknown' data-input='age_of_other[]') Unknown?
-
-        div(class='add_other')
-            p #[span] Add Person 2
-
-    h2 Reasons for calling
-    div(class='section')
-        h3 Primary Reason
+    div(class='step-two-option case-type-Diverse')
+        h2 Reason
         div(class='question-block clearfix')
-            select(name='primary_call_reason')
+            select(name='diverse_reason')
                 option(value='') Please select...
-                option(value='Alcohol abuse') Alcohol abuse
-                option(value='Bullying') Bullying
-                option(value='Depression') Depression
-                option(value='Domestic Violence') Domestic Violence
-                option(value='Eating disorder') Eating disorder
-                option(value='Education') Education
-                option(value='Emotional abuse') Emotional abuse
-                option(value='Exam stress ') Exam stress 
-                option(value='Family relationships') Family relationships
-                option(value='Gender Issues') Gender Issues
-                option(value='Grieve') Grieve
-                option(value='Health issue') Health issue
-                option(value='Historice Abuse') Historice Abuse
-                option(value='Mental Health ') Mental Health 
-                option(value='Neglect') Neglect
-                option(value='Peer relationships') Peer relationships
-                option(value='Physical Abuse ') Physical Abuse 
-                option(value='Self Harm ') Self Harm 
-                option(value='Sexual abuse') Sexual abuse
-                option(value='Substance abuse') Substance abuse
-                option(value='Suicide') Suicide
-                option(value='Support/General') Support/General
-                option(value='Teen Pregnancies') Teen Pregnancies
-                option(value='Unsafe Housing conditions') Housing conditions
+                option(value='Hang up before answering') Hang up before answering
+                option(value='Silent Call') Silent Call
+                option(value='Wrong Number') Wrong Number
+                option(value='Abusive') Abusive
+                option(value='Other') Other
 
-        h3 Secondary Reason
+        h2 Notes
         div(class='question-block clearfix')
-            select(name='secondary_call_reason')
-                option(value='') Please select...
-                option(value='Alcohol abuse') Alcohol abuse
-                option(value='Bullying') Bullying
-                option(value='Depression') Depression
-                option(value='Domestic Violence') Domestic Violence
-                option(value='Eating disorder') Eating disorder
-                option(value='Education') Education
-                option(value='Emotional abuse') Emotional abuse
-                option(value='Exam stress ') Exam stress 
-                option(value='Family relationships') Family relationships
-                option(value='Gender Issues') Gender Issues
-                option(value='Grieve') Grieve
-                option(value='Health issue') Health issue
-                option(value='Historice Abuse') Historice Abuse
-                option(value='Mental Health ') Mental Health 
-                option(value='Neglect') Neglect
-                option(value='Peer relationships') Peer relationships
-                option(value='Physical Abuse ') Physical Abuse 
-                option(value='Self Harm ') Self Harm 
-                option(value='Sexual abuse') Sexual abuse
-                option(value='Substance abuse') Substance abuse
-                option(value='Suicide') Suicide
-                option(value='Support/General') Support/General
-                option(value='Teen Pregnancies') Teen Pregnancies
-                option(value='Unsafe Housing conditions') Housing conditions
+            textarea(name='diverse_notes')
 
-    h2 Reffered To
-    div(class='section')
-        h3 Primary Reason
+    div(class='step-two-option case-type-Referral case-type-Request-For-Information')
+        h2 Name Of Caller
         div(class='question-block clearfix')
-            input(type='text', name='referred_to', placeholder='Extra Services: e.g. Victim Support')
+            input(type='text', name='name_of_caller', placeholder='E.g John')
 
-        h3 Follow Up
+        h2 Phone Number Of Caller
         div(class='question-block clearfix')
-            input(type='hidden', name='follow_up', value='Unknown')
-            div(class='age', data-value='yes', data-input='follow_up') 0-1
-            div(class='age', data-value='no', data-input='follow_up') 2-4
+            input(type='text', name='phone_number', placeholder='E.g 200 54 24 005')
+
+        h2 Addresses Of Caller
+        div(class='question-block clearfix')
+            textarea(name='address')
+
+        h2 Family Name
+        div(class='question-block clearfix')
+            input(type='text', name='surname', placeholder='E.g Smith')
+
+        h2 Mother's Name
+        div(class='question-block clearfix')
+            input(type='text', name='name_mother', placeholder='E.g Kirsty')
+
+        h2 Mother's Name
+        div(class='question-block clearfix')
+            input(type='text', name='name_father', placeholder='E.g Kirsty')
+
+        h2 Names
+        div(class='question-block clearfix')
+            input(type='text', name='surname', placeholder='Family Name: e.g. Smith')
+            p(class='helpit') Press #[span(class='enter-icon')] Enter
+            input(type='text', name='name_mother', placeholder='Mother\'s Name: e.g. Genaika')
+            p(class='helpit') #[span(class='enter-icon')]
+            input(type='text', name='name_father', placeholder='Father\'s Name: e.g. Jack')
+            p(class='helpit') #[span(class='enter-icon')]
+            input(type='text', name='other', placeholder='Other: e.g. Jen')
+            select(class="extra" name='relationship')
+                option(value='') Relationship?
+                option(value='Aunt') Aunt
+                option(value='Uncle') Uncle
+
+            div(class='add_other')
+                p #[span] Add Person 2
+
+        h2 Addresses Of Children
+        div(class='question-block clearfix')
+            textarea(name='address_children')
+
+        h2 Additional Information
+        div(class='question-block clearfix')
+            textarea(name='additional_information')
+
+        h2 School / Club
+        div(class='question-block clearfix')
+            input(type='text', name='school', placeholder='E.g Bayside')
+
+        h2 Others Involved
+        div(class='section')
+            div(class='person')
+                h3 Person 1
+                div(class='question-block clearfix')
+                    input(type='text', name='name_of_other[]', placeholder='Name: e.g. Greg')
+                    div(class='btn-right unknown', data-value='Unknown' data-input='name_of_other[]') Unknown?
+                div(class='question-block clearfix')
+                    input(type ='hidden', name='sex_of_other[]' value='m')
+                    div(class='sex male', data-value='m', data-input='sex_of_other[]') Male
+                    div(class='sex female', data-value='f', data-input='sex_of_other[]') Female
+                    div(class='btn-right unknown', data-value='u' data-input='sex_of_other[]') Unknown?
+
+                h3 Age
+                div(class='question-block clearfix')
+                    input(type='hidden', name='age_of_other[]', value='Unknown')
+                    div(class='age', data-value='0-1', data-input='age_of_other[]') 0-1
+                    div(class='age', data-value='2-4', data-input='age_of_other[]') 2-4
+                    div(class='age', data-value='5-8', data-input='age_of_other[]') 5-8
+                    div(class='age', data-value='9-12', data-input='age_of_other[]') 9-12
+                    div(class='age', data-value='13-16', data-input='age_of_other[]') 13-16
+                    div(class='age', data-value='17', data-input='age_of_other[]') 17
+                    div(class='age', data-value='18', data-input='age_of_other[]') 18
+                    div(class='age', data-value='Adult', data-input='age_of_other[]') Adult
+                    div(class='btn-right unknown', data-value='Unknown' data-input='age_of_other[]') Unknown?
+
+            div(class='add_other')
+                p #[span] Add Person 2
+
+        h2 Reasons for calling
+        div(class='section')
+            h3 Primary Reason
+            div(class='question-block clearfix')
+                select(name='primary_call_reason')
+                    option(value='') Please select...
+                    option(value='Alcohol abuse') Alcohol abuse
+                    option(value='Bullying') Bullying
+                    option(value='Depression') Depression
+                    option(value='Domestic Violence') Domestic Violence
+                    option(value='Eating disorder') Eating disorder
+                    option(value='Education') Education
+                    option(value='Emotional abuse') Emotional abuse
+                    option(value='Exam stress ') Exam stress 
+                    option(value='Family relationships') Family relationships
+                    option(value='Gender Issues') Gender Issues
+                    option(value='Grieve') Grieve
+                    option(value='Health issue') Health issue
+                    option(value='Historice Abuse') Historice Abuse
+                    option(value='Mental Health ') Mental Health 
+                    option(value='Neglect') Neglect
+                    option(value='Peer relationships') Peer relationships
+                    option(value='Physical Abuse ') Physical Abuse 
+                    option(value='Self Harm ') Self Harm 
+                    option(value='Sexual abuse') Sexual abuse
+                    option(value='Substance abuse') Substance abuse
+                    option(value='Suicide') Suicide
+                    option(value='Support/General') Support/General
+                    option(value='Teen Pregnancies') Teen Pregnancies
+                    option(value='Unsafe Housing conditions') Housing conditions
+
+            h3 Secondary Reason
+            div(class='question-block clearfix')
+                select(name='secondary_call_reason')
+                    option(value='') Please select...
+                    option(value='Alcohol abuse') Alcohol abuse
+                    option(value='Bullying') Bullying
+                    option(value='Depression') Depression
+                    option(value='Domestic Violence') Domestic Violence
+                    option(value='Eating disorder') Eating disorder
+                    option(value='Education') Education
+                    option(value='Emotional abuse') Emotional abuse
+                    option(value='Exam stress ') Exam stress 
+                    option(value='Family relationships') Family relationships
+                    option(value='Gender Issues') Gender Issues
+                    option(value='Grieve') Grieve
+                    option(value='Health issue') Health issue
+                    option(value='Historice Abuse') Historice Abuse
+                    option(value='Mental Health ') Mental Health 
+                    option(value='Neglect') Neglect
+                    option(value='Peer relationships') Peer relationships
+                    option(value='Physical Abuse ') Physical Abuse 
+                    option(value='Self Harm ') Self Harm 
+                    option(value='Sexual abuse') Sexual abuse
+                    option(value='Substance abuse') Substance abuse
+                    option(value='Suicide') Suicide
+                    option(value='Support/General') Support/General
+                    option(value='Teen Pregnancies') Teen Pregnancies
+                    option(value='Unsafe Housing conditions') Housing conditions
+
+    div(class='step-two-option case-type-AA-Call')
+        h2 Name Of Caller
+        div(class='question-block clearfix')
+            input(type='text', name='aa_caller', placeholder='E.g John')
+
+        h2 Name Of Custody Sergeant
+        div(class='question-block clearfix')
+            input(type='text', name='aa_custody_sergeant', placeholder='E.g Alex Smith PC77')
+
+        h2 Why is AA Needed
+        div(class='question-block clearfix')
+            textarea(name='aa_reason')
+
+        h2 First Name Of Minor
+        div(class='question-block clearfix')
+            input(type='text', name='aa_first_name_minor', placeholder='E.g Max')
+
+        h2 Middle Name Of Minor
+        div(class='question-block clearfix')
+            input(type='text', name='aa_middle_name_minor', placeholder='E.g James')
+
+        h2 Last Name Of Minor
+        div(class='question-block clearfix')
+            input(type='text', name='aa_surname_minor', placeholder='E.g Jackson')
+
+        h2 DOB Of Minor
+        div(class='question-block clearfix')
+            input(type='text', name='aa_dob', placeholder='E.g 01/01/2003')
+
+        div(class='question-block clearfix')
+            input(type ='hidden', name='aa_gender' value='m')
+            div(class='sex male', data-value='m', data-inputaa_gender') Male
+            div(class='sex female', data-value='f', data-input='aa_gender') Female
+
+        h2 Reason For Arrest
+        div(class='question-block clearfix')
+            textarea(name='aa_arrest_reason')
+
+        h2 Name &amp; Number Of Arresting Officer 1
+        div(class='question-block clearfix')
+            input(type='text', name='aa_arresting_officer_name1', placeholder='E.g John Smith PC111')
+
+        h2 Name &amp; Number Of Arresting Officer 2
+        div(class='question-block clearfix')
+            input(type='text', name='aa_arresting_officer_name2', placeholder='E.g John Smith PC111')
+
+        h2 Name &amp; Number Of Arresting Officer 3
+        div(class='question-block clearfix')
+            input(type='text', name='aa_arresting_officer_name2', placeholder='E.g John Smith PC111')
+
+h2 Reffered To
+div(class='question-block clearfix')
+    input(type='text', name='referred_to', placeholder='Extra Services: e.g. Victim Support')
+
+h3 Requested Anonymity
+div(class='question-block clearfix')
+    select(name='anonymity')
+        option(value='') Please select...
+        option(value='y') Yes
+        option(value='n') No
+        option(value='Not Discussed') Not Discussed
+
+h3 Follow Up
+div(class='question-block clearfix')
+    select(name='follow_up')
+        option(value='') Please select...
+        option(value='y') Yes
+        option(value='n') No
+
+h2 Reasons for calling
+div(class='section')
+    h3 Primary Reason
+    div(class='question-block clearfix')
+        select(name='primary_call_reason')
+            option(value='') Please select...
+            option(value='Alcohol abuse') Alcohol abuse
+            option(value='Bullying') Bullying
+            option(value='Depression') Depression
+            option(value='Domestic Violence') Domestic Violence
+            option(value='Eating disorder') Eating disorder
+            option(value='Education') Education
+            option(value='Emotional abuse') Emotional abuse
+            option(value='Exam stress ') Exam stress 
+            option(value='Family relationships') Family relationships
+            option(value='Gender Issues') Gender Issues
+            option(value='Grieve') Grieve
+            option(value='Health issue') Health issue
+            option(value='Historice Abuse') Historice Abuse
+            option(value='Mental Health ') Mental Health 
+            option(value='Neglect') Neglect
+            option(value='Peer relationships') Peer relationships
+            option(value='Physical Abuse ') Physical Abuse 
+            option(value='Self Harm ') Self Harm 
+            option(value='Sexual abuse') Sexual abuse
+            option(value='Substance abuse') Substance abuse
+            option(value='Suicide') Suicide
+            option(value='Support/General') Support/General
+            option(value='Teen Pregnancies') Teen Pregnancies
+            option(value='Unsafe Housing conditions') Housing conditions
+
+    h3 Secondary Reason
+    div(class='question-block clearfix')
+        select(name='secondary_call_reason')
+            option(value='') Please select...
+            option(value='Alcohol abuse') Alcohol abuse
+            option(value='Bullying') Bullying
+            option(value='Depression') Depression
+            option(value='Domestic Violence') Domestic Violence
+            option(value='Eating disorder') Eating disorder
+            option(value='Education') Education
+            option(value='Emotional abuse') Emotional abuse
+            option(value='Exam stress ') Exam stress 
+            option(value='Family relationships') Family relationships
+            option(value='Gender Issues') Gender Issues
+            option(value='Grieve') Grieve
+            option(value='Health issue') Health issue
+            option(value='Historice Abuse') Historice Abuse
+            option(value='Mental Health ') Mental Health 
+            option(value='Neglect') Neglect
+            option(value='Peer relationships') Peer relationships
+            option(value='Physical Abuse ') Physical Abuse 
+            option(value='Self Harm ') Self Harm 
+            option(value='Sexual abuse') Sexual abuse
+            option(value='Substance abuse') Substance abuse
+            option(value='Suicide') Suicide
+            option(value='Support/General') Support/General
+            option(value='Teen Pregnancies') Teen Pregnancies
+            option(value='Unsafe Housing conditions') Housing conditions
 
 h2 Call Notes
-p(class='hint') Enter any information you feel relevant in the notes section, this will save to the case file automatically.
-div(class='auto-save')
-    div(class='on-off') On
-textarea(name='notes')
+
+div(class='question-block clearfix')
+    p(class='hint') Enter any information you feel relevant in the notes section. This will save to the case file automatically.
+textarea(type='text', name='notes', placeholder='Name: Eg. Andrew')

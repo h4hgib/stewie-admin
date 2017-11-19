@@ -1,3 +1,5 @@
+# Originally repo'd on bitbucket, have now moved to Git for you!
+
 # Hacking For Humanity
 
 ## Problem to Solve:
@@ -16,7 +18,7 @@ Until June of this year, when it crashed, we used a system called Frameworki (by
 
 We need a system where we can log call details (fields would be based on personal details, family details, nature/category of problem, whether or not we will to social services etc.) but also where we can easily obtain statistics on a monthly basis. For example, calculate the number of calls received about suicidal thoughts, or self-harm.
 
-# To install:
+# To install (Windows only for now):
 
 ## Dependencies
 
@@ -93,7 +95,7 @@ Set up a database. Look in the db config file (`./src/api/classes/class.db.php`)
 
 ```sh
 $ cd /c/xampp/
-$ git clone https://stutippett@bitbucket.org/stutippett/h4h.git
+$ git clone [https://repo-location.git]
 $ cd h4h
 $ npm install
 $ gulp build

@@ -269,7 +269,7 @@ var app = function (app) {
      */
     app.postNewContact = function(xhr) {
         app.debug('app.postNewContact()');
-        var formEle = document.querySelectorAll('input, textarea'),
+        var formEle = document.querySelectorAll('input, textarea, select'),
             res  = JSON.parse(xhr.responseText),
             eles = document.querySelectorAll('*[data-input]'),
             date,month,i;
@@ -307,13 +307,31 @@ var app = function (app) {
     }
 
     /**
+     * Change step on form
+     */
+    app.showStep = function(step) {
+        var steps = document.querySelectorAll('.step'),
+            nextStep = document.querySelector('.step-'+step),
+            i;
+
+        for(i = 0; i < steps.length; i++) {
+            steps[i].style.display = 'none';
+        }
+
+        nextStep.style.display = 'block';
+        nextStep.scrollIntoView();
+    }
+
+    /**
      * Save a form to the databse
      */
     app.saveForm = function(e) {
         app.debug('app.saveForm');
         var field = e.target.name,
             value = e.target.value,
-            data  = [];
+            data  = [],
+            steps = document.querySelectorAll('.step-two-option'),
+            i;
 
         data = [
             { name : 'p',       val : 'saveContact' },
@@ -321,6 +339,15 @@ var app = function (app) {
             { name : 'field',   val : field },
             { name : 'value',   val : value }
         ];
+
+        if(field == 'age') {
+            app.showStep('two');
+        } else if(field === 'category') {
+            for(i = 0; i < steps.length; i++) {
+                steps[i].style.display = 'none';
+            }
+            document.querySelector('.step-two-option.case-type-'+ value.replace(' ','-')).style.display = 'block';
+        }
 
         app.ajax(config.url + config.api, data, app.postSaveContact);
     }
