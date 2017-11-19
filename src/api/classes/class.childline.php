@@ -81,6 +81,36 @@ class Childline {
     }
 
     /**
+     * getContact
+     */
+    public function getContact() {
+        $this->checkValidUser();
+
+        $this->db->sql = 'SELECT * FROM '.$this->db->dbTbl['contact'].' WHERE id = :id';
+
+        $res = $this->db->fetch(array(
+            ':id' => $this->getData('id')
+        ));
+
+        if($res === false) {
+            $this->output = array(
+                'success' => false,
+                'key'     => 'erf8U'
+            );
+        } else {
+            $this->output = array(
+                'success'   => true,
+                'key'       => 'dd7Yh',
+                'fields'    => $res,
+                'caseId'    => $res['id'],
+                'timestamp' => $res['timestamp']
+            );
+        }
+
+        $this->renderOutput();
+    }
+
+    /**
      * Search cases
      */
     public function search() {
@@ -113,8 +143,9 @@ class Childline {
           `aa_dob` LIKE :search OR
           `aa_gender` LIKE :search OR
           `aa_arrest_reason` LIKE :search OR
-          `aa_arresting_officer_name` LIKE :search OR
-          `aa_arresting_officer_number` LIKE :search OR
+          `aa_arresting_officer_name1` LIKE :search OR
+          `aa_arresting_officer_name2` LIKE :search OR
+          `aa_arresting_officer_name3` LIKE :search OR
           `aa_interviewed` LIKE :search OR
           `aa_interviewers` LIKE :search OR
           `aa_rights_read` LIKE :search OR

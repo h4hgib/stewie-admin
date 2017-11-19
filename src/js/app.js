@@ -165,7 +165,7 @@ var app = function (app) {
         app.debug('app.addCases()');
         var output      = '',
             searchAreas = document.querySelectorAll('.case-results'),
-            date,month,fu,i;
+            date,month,sexFull,fu,i;
 
         for(i = 0; i < searchAreas.length; i++) {
             searchAreas[i].style.display = 'none';
@@ -175,10 +175,12 @@ var app = function (app) {
             date = new Date(cases[i].timestamp);
             month = date.getMonth() + 1;
             fu   = cases[i].follow_up === 'y' ? 'Yes' : 'No';
-            output += '<div class="case"><span class="case-number">CN: '+ cases[i].id + '</span><span class="case-date">' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</span><div class="case-sex ' + cases[i].sex + '"></div><div><span>Age</span><span>' + cases[i].age + '</span></div><div><span>Case Type</span><span>' + cases[i].category + '</span></div><div><span>Primary Reason</span><span>' + cases[i].primary_call_reason + '</span></div><div><span>Follow Ups</span><span>' + fu + '</span></div></div>';
+            sexFull = cases[i].sex === 'm' ? 'male' : 'female';
+
+            output += '<div class="cases clearfix"><div class="case ' + sexFull + '"><div class="case-main"><span class="case-number">CN: '+ cases[i].id + '</span><span class="case-date">' + date.getDate() + '/' + month + '/' + date.getFullYear() + '</span><div class="case-sex">' + cases[i].sex + '</div><div><span>Age</span><span>' + cases[i].age + '</span></div><div><span>Case Type</span><span>' + cases[i].category + '</span></div><div><span>Primary Reason</span><span>' + cases[i].primary_call_reason + '</span></div><div><span>Follow Ups</span><span>' + fu + '</span></div></div><div class="case-view"><a href="/new-case.html?id=' + cases[i].id + '">View Case Details</a></div></div></div>'
         }
 
-        document.querySelector(ele).children[2].innerHTML = output;
+        document.querySelector(ele).children[1].innerHTML = output;
         document.querySelector(ele).style.display = 'block';
     }
 
@@ -250,7 +252,7 @@ var app = function (app) {
             //app.logout();
             app.debug('XHR Fail');
         }
-     }
+     };
 
     /**
      * Page specific code for new contact
@@ -262,6 +264,82 @@ var app = function (app) {
             ];
 
         app.ajax(config.url + config.api, data, app.postNewContact);
+    };
+
+    app.getParameterByName = function(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    };
+
+    /**
+     * Page specific code for edit contact
+     */
+    app.editCase = function() {
+        app.debug('app.editCase()');
+        var data = [
+                { name : 'p',  val : 'getContact' },
+                { name : 'id', val : app.getParameterByName('id') }
+            ];
+
+        app.ajax(config.url + config.api, data, app.postEditContact);
+    };
+
+    /**
+     * Callback after edit case found
+     */
+    app.postEditContact = function(xhr) {
+        app.debug('app.postEditContact()');
+        var formEle = document.querySelectorAll('input, textarea, select'),
+            res  = JSON.parse(xhr.responseText),
+            eles = document.querySelectorAll('*[data-input]'),
+            date,month,fields,i;
+
+        if(res.success) {
+            date = new Date();
+            date.setTime = res.timestamp;
+            month = date.getMonth()+1;
+            document.getElementById('case-number').innerHTML = res.caseId;
+            document.getElementById('time-log').innerHTML    = date.getHours() + ':' + date.getMinutes() + ' ' + date.getDate() + '/' + month + '/' + date.getFullYear();
+
+            fields = Object.values(res.fields);
+
+            if(document.querySelector('input[name="name_of_caller"]')) {
+                document.querySelector('input[name="name_of_caller"]').value = res.fields['name_of_caller'];
+            }
+
+            for(i = 0; i < fields.length; i++) {
+                console.log(i);
+                if(document.querySelector('input[name="' + fields[i] + '"]')) {
+                    document.querySelector('input[name="' + fields[i] + '"]').value = fields[i];
+                }
+            }
+            for(i = 0; i < fields.length; i++) {
+                if(document.querySelector('textarea[name="' + fields[i] + '"]')) {
+                    document.querySelector('textarea[name="' + fields[i] + '"]').innerHTML = fields[i];
+                }
+            }
+            for(i = 0; i < fields.length; i++) {
+                if(document.querySelector('select[name="' + fields[i] + '"]')) {
+                    document.querySelector('select[name="' + fields[i] + '"]').value = fields[i];
+                }
+            }
+
+            for(i = 0; i < formEle.length; i++) {
+                formEle[i].onblur = app.saveForm;
+            }
+
+            for(i = 0; i < eles.length; i++) {
+                eles[i].onclick = app.bindValue;
+            }
+        } else {
+            //app.logout();
+            app.debug('XHR Fail');
+        }
     };
 
     /**

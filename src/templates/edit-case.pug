@@ -1,0 +1,14 @@
+doctype
+html
+    include ./partials/head.pug
+
+    body(class='loading', data-load='editCase')
+        div(class='app')
+            include ./partials/layout/header.pug
+
+            include ./partials/layout/content.pug
+            include ./partials/layout/navigation.pug
+
+        include ./partials/layout/notepad.pug
+
+        include ./partials/foot.pug
