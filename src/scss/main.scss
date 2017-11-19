@@ -440,3 +440,12 @@ footer {
     display: block;
   }
 }
+
+.notes-body iframe.chat {
+    width: 30%;
+    border: 0;
+    height: 400px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
