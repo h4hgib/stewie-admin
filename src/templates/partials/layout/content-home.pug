@@ -1,12 +1,14 @@
 div(class="main-content")
-    div(class="top-bar")
-        p Welcome to your user area #[strong(class='agent-name') Agent]
+    div(class="top-bar") 
+        div(class="case-log")
+            span Welcome to your user area #[strong(class='agent-name') Agent]
 
     div(class="main-bar")
-        h1 Search Cases
 
-        div(class='btn-search') Open Search
-        div(class='btn-search') Date
+        div(class='question-block clearfix')
+            h2 Search Cases
+            div(class='btn-search') Open Search
+            div(class='btn-search') Date
 
         input(type='text', id='search', name='search', placeholder='Keywords: e.g. Case no, Child Name, School...')
         p(class='search-suggestions')
