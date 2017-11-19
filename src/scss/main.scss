@@ -150,6 +150,10 @@ html, body, .nav-fill {
       margin-top: 0px;
     }
   }
+  a {
+    color: #3f6cad;
+    text-decoration: none;
+  }
 }
 
 .main-content {
@@ -338,7 +342,7 @@ select {
 }
 
 .main-bar .enter-icon {
-  background: red;
+  background: url(../images/enter.png);
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -388,7 +392,10 @@ select {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f8f7f7',GradientType=0 );
 
 }
-
+.btn,
+.btn-right {
+  cursor: pointer;
+}
 .main-bar .age {
     margin: 5px;
     padding: 17px;
