@@ -2,25 +2,28 @@
 
 /**
  * The main app instance
+ * Developed during the Hacking For Humanity Hackathon in Gibraltar, 19th November 2017
+ *
+ * Author: stu.tippett@gmail.com
  */
 var app = function (app) {
     /**
-     * Configuration attributes, these cannot change
+     * Configuration attributes
      */
     var config = {
-        api: 'api/api.php',
-        debug: {
+        api : 'api/api.php',
+        debug : {
             on: true
         },
-        url: window.location.host == 'localhost:3000' || window.location.host == 'childline.local' ? 'http://childline.local/' : 'http://www.childline.gi/'
+        url : window.location.host == 'localhost:3000' || window.location.host == 'childline.local' ? 'http://childline.local/' : 'http://www.childline.gi/'
     };
 
     /**
-     * Cached attributes, these can change
+     * Cached attributes
      */
     app.cache = {
-        un: null,
-        key: null
+        un :  null,
+        key : null
     };
 
     /**
